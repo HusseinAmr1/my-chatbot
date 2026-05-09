@@ -2,90 +2,9 @@
 <html>
 <head>
     <title>AI Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #0f172a;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .container {
-            width: 450px;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            margin-top: 20px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .header {
-            background: #2563eb;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .chat {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            height: 400px;
-        }
-
-        .user {
-            text-align: right;
-            margin: 5px;
-        }
-
-        .bot {
-            text-align: left;
-            margin: 5px;
-        }
-
-        .bubble {
-            display: inline-block;
-            padding: 10px;
-            border-radius: 10px;
-            max-width: 80%;
-        }
-
-        .user .bubble {
-            background: #2563eb;
-            color: white;
-        }
-
-        .bot .bubble {
-            background: #e2e8f0;
-        }
-
-        form {
-            display: flex;
-            padding: 10px;
-            border-top: 1px solid #ddd;
-        }
-
-        input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        button {
-            margin-left: 10px;
-            padding: 10px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 8px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
@@ -96,7 +15,7 @@
         AI Chatbot 🤖
     </div>
 
-    <div class="chat">
+    <div class="chat" id="chat">
 
         {% for role, msg in chat %}
             <div class="{{ role }}">
@@ -114,6 +33,11 @@
     </form>
 
 </div>
+
+<script>
+    const chat = document.getElementById("chat");
+    chat.scrollTop = chat.scrollHeight;
+</script>
 
 </body>
 </html>
