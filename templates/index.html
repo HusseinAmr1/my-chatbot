@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+</head>
+<body>
+
+    <h1>Simple Chatbot</h1>
+
+    <form method="POST">
+        <input type="text" name="message" placeholder="Type something...">
+        <button type="submit">Send</button>
+    </form>
+
+    <hr>
+
+    {% for msg in chat %}
+
+        {% if msg.user %}
+            <p><b>You:</b> {{ msg.user }}</p>
+        {% endif %}
+
+        {% if msg.bot %}
+            <p><b>Bot:</b> {{ msg.bot }}</p>
+        {% endif %}
+
+    {% endfor %}
+
+</body>
+</html>
