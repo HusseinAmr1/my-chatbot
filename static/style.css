@@ -31,11 +31,12 @@ body {
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    scroll-behavior: smooth;
 }
 
 .user, .bot {
     margin: 6px;
-    animation: fadeIn 0.3s ease-in;
+    animation: fadeIn 0.3s ease;
 }
 
 .user {
@@ -52,15 +53,22 @@ body {
     border-radius: 12px;
     max-width: 80%;
     word-wrap: break-word;
+    transition: 0.2s;
 }
 
 .user .bubble {
     background: #2563eb;
     color: white;
+    animation: slideRight 0.3s ease;
 }
 
 .bot .bubble {
     background: #e2e8f0;
+    animation: slideLeft 0.3s ease;
+}
+
+.bubble:hover {
+    transform: scale(1.02);
 }
 
 form {
@@ -86,13 +94,29 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background: #1d4ed8;
+}
+
+/* animations */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideLeft {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* mobile */
+@media (max-width: 600px) {
+    .bubble {
+        max-width: 90%;
     }
 }
